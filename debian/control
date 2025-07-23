@@ -1,0 +1,17 @@
+Source: sddm
+Section: misc
+Priority: important
+Maintainer: Uri Herrera <uri_herrera@nxos.org>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: http://nxos.org
+
+
+Package: sddm
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, openrc, sddm
+Conflicts: systemd, systemd-sysv
+Description: Package to add lvm2 configuration for OpenRC.
+ This package will add the boot scripts to use lvm2
+ with OpenRC in Nitrux.
+

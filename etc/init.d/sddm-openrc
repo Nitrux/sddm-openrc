@@ -1,0 +1,37 @@
+#!/sbin/openrc-run
+
+description="Simple Desktop Display Manager"
+command="/usr/sbin/sddm"
+supervisor=supervise-daemon
+
+depend() {
+	need dbus console-setup
+	use logger
+	after plymouthd
+	provide sddm
+}
+
+start_pre() {
+	local heed_default_dm="${HEED_DEFAULT_DISPLAY_MANAGER:-true}"
+	local default_dm_file="/etc/X11/default-display-manager"
+
+	if grep -wqs text /proc/cmdline; then
+		einfo "Not starting SDDM; 'text' mode found on kernel command line."
+		return 1
+	fi
+
+	if yesno "${heed_default_dm}"; then
+		if [ -f "${default_dm_file}" ]; then
+			if [ "$(basename -- "$(cat "${default_dm_file}")")" != "sddm" ]; then
+				einfo "Not starting SDDM; it is not the default display manager."
+				return 1
+			fi
+		fi
+	fi
+
+	if openrc-running plymouthd; then
+		ebegin "Stopping Plymouth to start SDDM"
+		plymouth quit
+		eend $?
+	fi
+}
