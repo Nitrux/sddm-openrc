@@ -1,4 +1,4 @@
-Source: sddm
+Source: sddm-openrc
 Section: misc
 Priority: important
 Maintainer: Uri Herrera <uri_herrera@nxos.org>
@@ -7,7 +7,7 @@ Standards-Version: 3.9.6
 Homepage: http://nxos.org
 
 
-Package: sddm
+Package: sddm-openrc
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}, openrc, sddm
 Conflicts: systemd, systemd-sysv
