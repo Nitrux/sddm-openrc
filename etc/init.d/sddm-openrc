@@ -29,7 +29,7 @@ start_pre() {
 		fi
 	fi
 
-	if openrc-running plymouthd; then
+	if rc_service_started plymouthd; then
 		ebegin "Stopping Plymouth to start SDDM"
 		plymouth quit
 		eend $?

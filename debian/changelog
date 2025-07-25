@@ -1,3 +1,9 @@
+sddm-openrc (0.0.3)  nitrux; urgency=medium
+
+  * Fix service.
+
+ -- Uri Herrera <uri_herrera@nxos.org>  Fri, 25 Jul 2025 13:53:00 -0500
+
 sddm-openrc (0.0.2)  nitrux; urgency=medium
 
   * Fix executable path.
