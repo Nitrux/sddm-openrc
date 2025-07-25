@@ -1,7 +1,7 @@
 #!/sbin/openrc-run
 
 description="Simple Desktop Display Manager"
-command="/usr/sbin/sddm"
+command="/usr/bin/sddm"
 supervisor=supervise-daemon
 
 depend() {
